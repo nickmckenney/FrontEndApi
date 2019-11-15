@@ -15,6 +15,7 @@ class stateRead extends Component {
   onEditHandle() {}
   onCompleteHandle() {}
   onSubmitHandle(event) {
+    console.log("a");
     event.preventDefault();
     this.setState({
       state: [
@@ -26,6 +27,7 @@ class stateRead extends Component {
       ]
     });
     event.target.item.value = "";
+    console.log("a");
   }
 
   getState() {
@@ -36,9 +38,7 @@ class stateRead extends Component {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         this.setState({ state: res });
-        console.log(this.state);
       });
   }
   componentDidMount() {
@@ -48,8 +48,20 @@ class stateRead extends Component {
   //   let rowsInArray = this.state.state.map(input => {
   //     let obj = {
   //       state: input.name,
-  //       fundingAmount: input.amount
+  //       fundingAmount: input.amount,
+  //       delete: (
+  //         <button onClick={this.onDeleteHandle.bind(this, input.id)}>
+  //           Delete
+  //         </button>
+  //       ),
+  //       edit: (
+  //         <button onClick={this.onEditHandle.bind(this, input.id, input.name)}>
+  //           Edit
+  //         </button>
+  //       ),
+  //       complete: <button onClick={this.onCompleteHandle}>Complete</button>
   //     };
+
   //     return obj;
   //   });
 
@@ -66,15 +78,47 @@ class stateRead extends Component {
   //             <TableHeader numeric name="fundingAmount" tooltip=".">
   //               Funding Amount
   //             </TableHeader>
+  //             <TableHeader name="delete" tooltip=".">
+  //               Delete
+  //             </TableHeader>
+  //             <TableHeader name="edit" tooltip=".">
+  //               Edit
+  //             </TableHeader>
+  //             <TableHeader name="complete" tooltip=".">
+  //               Complete
+  //             </TableHeader>
   //           </DataTable>
+  //           <form onSubmit={this.onSubmitHandle.bind(this)}>
+  //             <input
+  //               type="text"
+  //               name="item"
+  //               className="item"
+  //               placeholder="StateName"
+  //             />
+  //             <input
+  //               type="text"
+  //               name="item2"
+  //               className="item"
+  //               placeholder="FUNDING VALUE"
+  //             />
+
+  //             <button className="btn-add-item">Add</button>
+  //           </form>
   //         </div>
-  //       </Link>
-  //       <Link to={"/state/" + this.state.state}>
-  //         <h1>a</h1>
   //       </Link>
   //     </div>
   //   );
   // }
+  // THE DIFFERENCE
+  // THE DIFFERENCE
+  // THE DIFFERENCE
+  // THE DIFFERENCE
+  // THE DIFFERENCE
+  // THE DIFFERENCE
+  // THE DIFFERENCE
+  // THE DIFFERENCE
+  // THE DIFFERENCE
+
   render() {
     return (
       <div>
@@ -99,6 +143,7 @@ class stateRead extends Component {
             <li key={item.id}>
               {"STATENAME " + item.name + " AMOUNT "}
               {item.amount}
+
               <button onClick={this.onDeleteHandle.bind(this, item.id)}>
                 Delete
               </button>
