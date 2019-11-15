@@ -32,7 +32,7 @@ class stateRead extends Component {
       let obj = {
         account_title: input.treasury_account.federal_account.account_title,
         award_Id: input.financial_accounts_by_awards_id,
-        agency_name: input.treasury_account.federal_account.agency_name
+        agency_name: input.treasury_account.reporting_agency_name
       };
       return obj;
     });

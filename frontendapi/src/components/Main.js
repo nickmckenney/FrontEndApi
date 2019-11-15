@@ -13,6 +13,7 @@ const Main = () => (
     <Route exact path="/read" component={StateRead} />
     <Route exact path="/awardId" component={AwardId} />
     <Route exact path="/awardSpending" component={AwardSpending} />
+    <Route exact path="/state/:name" component={State} />
   </Switch>
 );
 
