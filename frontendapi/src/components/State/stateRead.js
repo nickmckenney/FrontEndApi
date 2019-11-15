@@ -11,7 +11,17 @@ class stateRead extends Component {
     };
     this.getState = this.getState.bind(this);
   }
-  onDeleteHandle() {}
+  onDeleteHandle() {
+    let id = arguments[0];
+    this.setState({
+      state: this.state.state.filter(item => {
+        if (item.id !== id) {
+          return item;
+        }
+      })
+    });
+  }
+
   onEditHandle() {}
   onCompleteHandle() {}
   onSubmitHandle(event) {
@@ -43,6 +53,46 @@ class stateRead extends Component {
   }
   componentDidMount() {
     this.getState();
+  }
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.onSubmitHandle.bind(this)}>
+          <input
+            type="text"
+            name="item"
+            className="item"
+            placeholder="StateName"
+          />
+          <input
+            type="text"
+            name="item2"
+            className="item"
+            placeholder="FUNDING VALUE"
+          />
+
+          <button className="btn-add-item">Add</button>
+        </form>
+        <ul>
+          {this.state.state.map(item => (
+            <li key={item.id}>
+              {"STATENAME " + item.name + " AMOUNT "}
+              {item.amount}
+
+              <button onClick={this.onDeleteHandle.bind(this, item.id)}>
+                Delete
+              </button>
+              <button
+                onClick={this.onEditHandle.bind(this, item.id, item.name)}
+              >
+                Edit
+              </button>
+              <button onClick={this.onCompleteHandle}>Complete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
   }
   // render() {
   //   let rowsInArray = this.state.state.map(input => {
@@ -118,47 +168,6 @@ class stateRead extends Component {
   // THE DIFFERENCE
   // THE DIFFERENCE
   // THE DIFFERENCE
-
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.onSubmitHandle.bind(this)}>
-          <input
-            type="text"
-            name="item"
-            className="item"
-            placeholder="StateName"
-          />
-          <input
-            type="text"
-            name="item2"
-            className="item"
-            placeholder="FUNDING VALUE"
-          />
-
-          <button className="btn-add-item">Add</button>
-        </form>
-        <ul>
-          {this.state.state.map(item => (
-            <li key={item.id}>
-              {"STATENAME " + item.name + " AMOUNT "}
-              {item.amount}
-
-              <button onClick={this.onDeleteHandle.bind(this, item.id)}>
-                Delete
-              </button>
-              <button
-                onClick={this.onEditHandle.bind(this, item.id, item.name)}
-              >
-                Edit
-              </button>
-              <button onClick={this.onCompleteHandle}>Complete</button>
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
 }
 
 export default stateRead;
