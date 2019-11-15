@@ -14,7 +14,20 @@ class stateRead extends Component {
   onDeleteHandle() {}
   onEditHandle() {}
   onCompleteHandle() {}
-  onSubmitHandle() {}
+  onSubmitHandle(event) {
+    event.preventDefault();
+    this.setState({
+      state: [
+        ...this.state.state,
+        {
+          name: event.target.item.value,
+          amount: event.target.item2.value
+        }
+      ]
+    });
+    event.target.item.value = "";
+  }
+
   getState() {
     fetch("https://governmentfundingapi.herokuapp.com/state/", {
       headers: {
@@ -66,7 +79,19 @@ class stateRead extends Component {
     return (
       <div>
         <form onSubmit={this.onSubmitHandle.bind(this)}>
-          <input type="text" name="item" className="item" />
+          <input
+            type="text"
+            name="item"
+            className="item"
+            placeholder="StateName"
+          />
+          <input
+            type="text"
+            name="item2"
+            className="item"
+            placeholder="FUNDING VALUE"
+          />
+
           <button className="btn-add-item">Add</button>
         </form>
         <ul>
