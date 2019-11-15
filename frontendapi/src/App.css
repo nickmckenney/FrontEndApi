@@ -23,12 +23,8 @@
   height: 100%;
   animation: pulse 4s infinite;
 }
-.stateFont {
-  font-size: 20px;
+
+.statesPrinted {
+  position: relative;
+  left: 40%;
 }
-/* .statesPrinted {
-  background-color: #23074d;
-  margin: 0 auto;
-  width: 400px;
-  text-decoration: none;
-} */

@@ -28,14 +28,13 @@ class stateRead extends Component {
     this.getState();
   }
   render() {
-    console.log(this.state);
     let searchArray = this.state.state.map(input => (
       <p>
         <DataTable
           shadow={2}
           rows={[{ state: input.name, fundingAmount: input.amount }]}
         >
-          <TableHeader name="state" tooltip="state name">
+          <TableHeader className="a" name="state" tooltip="state name">
             State Names
           </TableHeader>
           <TableHeader numeric name="fundingAmount" tooltip="Number of states">
@@ -49,8 +48,7 @@ class stateRead extends Component {
         <h1 className="App-header">states</h1>
         <Link to="/read">
           <div className="statesPrinted">
-            <h1></h1>
-            <h1 className="stateFont">{searchArray}</h1>
+            <h1>{searchArray}</h1>
           </div>
         </Link>
 
