@@ -7,17 +7,9 @@
   height: 100vh;
 }
 .header-color {
-  background: #23074d; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    grey,
-    #23074d
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    grey,
-    #23074d
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #23074d;
+  background: -webkit-linear-gradient(to right, grey, #23074d);
+  background: linear-gradient(to right, grey, #23074d);
 }
 .intro-home-page {
   text-align: center;
@@ -30,4 +22,13 @@
   width: 100%;
   height: 100%;
   animation: pulse 4s infinite;
+}
+.stateFont {
+  font-size: 20px;
+}
+.statesPrinted {
+  background-color: #23074d;
+  margin: 0 auto;
+  width: 400px;
+  text-decoration: none;
 }
