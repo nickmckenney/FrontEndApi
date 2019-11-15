@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../../App.css";
+import "../App.css";
 import { TableHeader, DataTable } from "react-mdl";
 
 import { Route, Link } from "react-router-dom";
@@ -12,7 +12,7 @@ class stateRead extends Component {
     this.getState = this.getState.bind(this);
   }
   getState() {
-    fetch("https://governmentfundingapi.herokuapp.com/state/", {
+    fetch("https://governmentfundingapi.herokuapp.com/awardId/", {
       headers: {
         Accept: "application/json"
       }
@@ -30,8 +30,9 @@ class stateRead extends Component {
   render() {
     let rowsInArray = this.state.state.map(input => {
       let obj = {
-        state: input.name,
-        fundingAmount: input.amount
+        account_title: input.treasury_account.federal_account.account_title,
+        award_Id: input.financial_accounts_by_awards_id,
+        agency_name: input.treasury_account.federal_account.agency_name
       };
       return obj;
     });
@@ -43,11 +44,14 @@ class stateRead extends Component {
         <Link to="/read">
           <div className="statesPrinted">
             <DataTable shadow={2} rows={rowsInArray}>
-              <TableHeader className="a" name="state" tooltip=".">
-                State Name
+              <TableHeader className="a" name="account_title" tooltip=".">
+                Account Title
               </TableHeader>
-              <TableHeader numeric name="fundingAmount" tooltip=".">
-                Funding Amount
+              <TableHeader className="a" name="award_Id" tooltip=".">
+                Account Id
+              </TableHeader>
+              <TableHeader className="a" name="agency_name" tooltip=".">
+                Account Id
               </TableHeader>
             </DataTable>
             <h1></h1>
