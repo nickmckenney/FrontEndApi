@@ -26,7 +26,6 @@ class stateRead extends Component {
   }
 
   onSubmitHandle(event) {
-    console.log("a");
     event.preventDefault();
     this.setState({
       state: [
@@ -38,7 +37,6 @@ class stateRead extends Component {
       ]
     });
     event.target.item.value = "";
-    console.log("a");
   }
 
   getState() {
@@ -73,7 +71,7 @@ class stateRead extends Component {
 
     return (
       <div className="App">
-        <h1 className="App-header">states</h1>
+        <h1 className="App-header">Your States Fundings</h1>
         <form onSubmit={this.onSubmitHandle.bind(this)}>
           <input
             type="text"

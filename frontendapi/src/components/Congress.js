@@ -42,7 +42,7 @@ class Congress extends Component {
 
     return (
       <div className="App">
-        <h1 className="App-header">states</h1>
+        <h1 className="App-header">Your Congressional Justifications</h1>
 
         <Link to="/congress/">
           <div className="statesPrinted">

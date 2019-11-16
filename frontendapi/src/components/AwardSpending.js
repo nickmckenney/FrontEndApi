@@ -39,7 +39,7 @@ class stateRead extends Component {
 
     return (
       <div className="App">
-        <h1 className="App-header">states</h1>
+        <h1 className="App-header">Names Of Corperations</h1>
 
         <Link to="/read">
           <div className="statesPrinted">
