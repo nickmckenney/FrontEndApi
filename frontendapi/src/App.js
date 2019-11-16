@@ -1,16 +1,20 @@
 import React, { Component } from "react";
 import "./App.css";
+import stateRead from "./components/State/stateRead";
 import Main from "./components/Main.js";
 import { Layout, Header, Navigation, Drawer, Content } from "react-mdl";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      show: false
+    };
   }
   render() {
     return (
       <div className="mainPage">
+        <stateRead />
         <Layout>
           <Header className="header-color" title="Government Funding" scroll>
             <Navigation>

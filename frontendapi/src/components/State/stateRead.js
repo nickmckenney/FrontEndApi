@@ -7,23 +7,24 @@ class stateRead extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      state: []
+      state: [],
+      edit: false,
+      id: null
     };
     this.getState = this.getState.bind(this);
   }
+
   onDeleteHandle() {
-    let id = arguments[0];
+    let name = "North Dakota";
     this.setState({
       state: this.state.state.filter(item => {
-        if (item.id !== id) {
+        if (item.name !== name) {
           return item;
         }
       })
     });
   }
 
-  onEditHandle() {}
-  onCompleteHandle() {}
   onSubmitHandle(event) {
     console.log("a");
     event.preventDefault();
@@ -54,9 +55,25 @@ class stateRead extends Component {
   componentDidMount() {
     this.getState();
   }
+
   render() {
+    let rowsInArray = this.state.state.map(input => {
+      let obj = {
+        state: input.name,
+        fundingAmount: input.amount,
+        delete: (
+          <button onClick={this.onDeleteHandle.bind(this, input.id)}>
+            Delete
+          </button>
+        )
+      };
+
+      return obj;
+    });
+
     return (
-      <div>
+      <div className="App">
+        <h1 className="App-header">states</h1>
         <form onSubmit={this.onSubmitHandle.bind(this)}>
           <input
             type="text"
@@ -73,101 +90,74 @@ class stateRead extends Component {
 
           <button className="btn-add-item">Add</button>
         </form>
-        <ul>
-          {this.state.state.map(item => (
-            <li key={item.id}>
-              {"STATENAME " + item.name + " AMOUNT "}
-              {item.amount}
-
-              <button onClick={this.onDeleteHandle.bind(this, item.id)}>
+        <input type="text" />
+        <Link to="/read">
+          <div className="statesPrinted">
+            <DataTable shadow={2} rows={rowsInArray}>
+              <TableHeader className="a" name="state" tooltip=".">
+                State Name
+              </TableHeader>
+              <TableHeader numeric name="fundingAmount" tooltip=".">
+                Funding Amount
+              </TableHeader>
+              <TableHeader name="delete" tooltip=".">
                 Delete
-              </button>
-              <button
-                onClick={this.onEditHandle.bind(this, item.id, item.name)}
-              >
+              </TableHeader>
+              <TableHeader name="edit" tooltip=".">
                 Edit
-              </button>
-              <button onClick={this.onCompleteHandle}>Complete</button>
-            </li>
-          ))}
-        </ul>
+              </TableHeader>
+              <TableHeader name="complete" tooltip=".">
+                Complete
+              </TableHeader>
+            </DataTable>
+          </div>
+        </Link>
       </div>
     );
   }
+  // THE DIFFERENCE
+  // THE DIFFERENCE
+  // THE DIFFERENCE
+  // THE DIFFERENCE
+  // THE DIFFERENCE
+  // THE DIFFERENCE
+  // THE DIFFERENCE
+  // THE DIFFERENCE
+  // THE DIFFERENCE
   // render() {
-  //   let rowsInArray = this.state.state.map(input => {
-  //     let obj = {
-  //       state: input.name,
-  //       fundingAmount: input.amount,
-  //       delete: (
-  //         <button onClick={this.onDeleteHandle.bind(this, input.id)}>
-  //           Delete
-  //         </button>
-  //       ),
-  //       edit: (
-  //         <button onClick={this.onEditHandle.bind(this, input.id, input.name)}>
-  //           Edit
-  //         </button>
-  //       ),
-  //       complete: <button onClick={this.onCompleteHandle}>Complete</button>
-  //     };
-
-  //     return obj;
-  //   });
-
   //   return (
-  //     <div className="App">
-  //       <h1 className="App-header">states</h1>
-  //       <input type="text" />
-  //       <Link to="/read">
-  //         <div className="statesPrinted">
-  //           <DataTable shadow={2} rows={rowsInArray}>
-  //             <TableHeader className="a" name="state" tooltip=".">
-  //               State Name
-  //             </TableHeader>
-  //             <TableHeader numeric name="fundingAmount" tooltip=".">
-  //               Funding Amount
-  //             </TableHeader>
-  //             <TableHeader name="delete" tooltip=".">
-  //               Delete
-  //             </TableHeader>
-  //             <TableHeader name="edit" tooltip=".">
-  //               Edit
-  //             </TableHeader>
-  //             <TableHeader name="complete" tooltip=".">
-  //               Complete
-  //             </TableHeader>
-  //           </DataTable>
-  //           <form onSubmit={this.onSubmitHandle.bind(this)}>
-  //             <input
-  //               type="text"
-  //               name="item"
-  //               className="item"
-  //               placeholder="StateName"
-  //             />
-  //             <input
-  //               type="text"
-  //               name="item2"
-  //               className="item"
-  //               placeholder="FUNDING VALUE"
-  //             />
+  //     <div>
+  //       <form onSubmit={this.onSubmitHandle.bind(this)}>
+  //         <input
+  //           type="text"
+  //           name="item"
+  //           className="item"
+  //           placeholder="StateName"
+  //         />
+  //         <input
+  //           type="text"
+  //           name="item2"
+  //           className="item"
+  //           placeholder="FUNDING VALUE"
+  //         />
 
-  //             <button className="btn-add-item">Add</button>
-  //           </form>
-  //         </div>
-  //       </Link>
+  //         <button className="btn-add-item">Add</button>
+  //       </form>
+  //       <ul>
+  //         {this.state.state.map(item => (
+  //           <li key={item.id}>
+  //             {"STATENAME " + item.name + " AMOUNT "}
+  //             {item.amount}
+
+  //             <button onClick={this.onDeleteHandle.bind(this, item.id)}>
+  //               Delete
+  //             </button>
+  //           </li>
+  //         ))}
+  //       </ul>
   //     </div>
   //   );
   // }
-  // THE DIFFERENCE
-  // THE DIFFERENCE
-  // THE DIFFERENCE
-  // THE DIFFERENCE
-  // THE DIFFERENCE
-  // THE DIFFERENCE
-  // THE DIFFERENCE
-  // THE DIFFERENCE
-  // THE DIFFERENCE
 }
 
 export default stateRead;
