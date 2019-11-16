@@ -41,7 +41,7 @@ class stateRead extends Component {
     });
     event.target.item.value = "";
   }
-  onSubmitHandleEdit(event) {
+  onSubmitHandleDelete(event) {
     event.preventDefault();
     let name = event.target.item.value;
     console.log(event.target.item.value);
@@ -102,21 +102,15 @@ class stateRead extends Component {
 
           <button className="btn-add-item">Add</button>
         </form>
-        <form onSubmit={this.onSubmitHandleEdit.bind(this)}>
+        <form onSubmit={this.onSubmitHandleDelete.bind(this)}>
           <input
             type="text"
             name="item"
             className="item"
             placeholder="Edit StateName"
           />
-          <input
-            type="text"
-            name="item2"
-            className="item2"
-            placeholder=" New StateName"
-          />
 
-          <button className="btn-add-item">Edit</button>
+          <button className="btn-add-item">Delete</button>
         </form>
         <Link to="/state/">
           <div className="statesPrinted">
