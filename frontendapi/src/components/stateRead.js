@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../../App.css";
+import "../App.css";
 import { TableHeader, DataTable } from "react-mdl";
 
 import { Route, Link } from "react-router-dom";
@@ -90,8 +90,7 @@ class stateRead extends Component {
 
           <button className="btn-add-item">Add</button>
         </form>
-        <input type="text" />
-        <Link to="/read">
+        <Link to="/state/">
           <div className="statesPrinted">
             <DataTable shadow={2} rows={rowsInArray}>
               <TableHeader className="a" name="state" tooltip=".">

@@ -41,7 +41,7 @@ class stateRead extends Component {
       <div className="App">
         <h1 className="App-header">states</h1>
 
-        <Link to="/read">
+        <Link to="/">
           <div className="statesPrinted">
             <DataTable shadow={2} rows={rowsInArray}>
               <TableHeader className="a" name="account_title" tooltip=".">

@@ -25,6 +25,41 @@
 }
 
 .statesPrinted {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  justify-self: center;
+  align-content: center;
+  align-self: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 1000px;
+}
+.item {
+  width: 200px;
+  height: 30px;
+  margin: 0 auto;
+  padding: 0 0 0 0px;
   position: relative;
-  left: 40%;
+  top: -20px;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  justify-self: center;
+  align-content: center;
+  align-self: center;
+  align-items: center;
+}
+.btn-add-item {
+  width: 300px;
+  height: 50px;
+  position: relative;
+  top: -10px;
+  text-align: center;
+  left: 687px;
+}
+.App-header {
+  background-color: black;
+  color: white;
+  text-align: center;
 }
