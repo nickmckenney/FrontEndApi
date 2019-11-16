@@ -15,16 +15,17 @@ class stateRead extends Component {
   }
 
   onDeleteHandle() {
-    let name = "North Dakota";
+    let id = this.state.state[0]._id;
     this.setState({
       state: this.state.state.filter(item => {
-        if (item.name !== name) {
+        console.log(this.state.state[0]._id);
+        if (item._id !== id) {
           return item;
         }
       })
     });
   }
-
+  onEditHandle() {}
   onSubmitHandle(event) {
     event.preventDefault();
     this.setState({
@@ -62,6 +63,11 @@ class stateRead extends Component {
         delete: (
           <button onClick={this.onDeleteHandle.bind(this, input.id)}>
             Delete
+          </button>
+        ),
+        edit: (
+          <button onClick={this.onEditHandle.bind(this, input.id, input.name)}>
+            Edit
           </button>
         )
       };
