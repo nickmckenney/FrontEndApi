@@ -25,7 +25,9 @@ class stateRead extends Component {
       })
     });
   }
-  onEditHandle() {}
+  onEditHandle() {
+    console.log("a");
+  }
   onSubmitHandle(event) {
     event.preventDefault();
     this.setState({
@@ -39,7 +41,18 @@ class stateRead extends Component {
     });
     event.target.item.value = "";
   }
-
+  onSubmitHandleEdit(event) {
+    event.preventDefault();
+    let name = event.target.item.value;
+    console.log(event.target.item.value);
+    this.setState({
+      state: this.state.state.filter(item => {
+        if (item.name !== name) {
+          return item;
+        }
+      })
+    });
+  }
   getState() {
     fetch("https://governmentfundingapi.herokuapp.com/state/", {
       headers: {
@@ -63,11 +76,6 @@ class stateRead extends Component {
         delete: (
           <button onClick={this.onDeleteHandle.bind(this, input.id)}>
             Delete
-          </button>
-        ),
-        edit: (
-          <button onClick={this.onEditHandle.bind(this, input.id, input.name)}>
-            Edit
           </button>
         )
       };
@@ -94,6 +102,22 @@ class stateRead extends Component {
 
           <button className="btn-add-item">Add</button>
         </form>
+        <form onSubmit={this.onSubmitHandleEdit.bind(this)}>
+          <input
+            type="text"
+            name="item"
+            className="item"
+            placeholder="Edit StateName"
+          />
+          <input
+            type="text"
+            name="item2"
+            className="item2"
+            placeholder=" New StateName"
+          />
+
+          <button className="btn-add-item">Edit</button>
+        </form>
         <Link to="/state/">
           <div className="statesPrinted">
             <DataTable shadow={2} rows={rowsInArray}>
@@ -103,64 +127,12 @@ class stateRead extends Component {
               <TableHeader numeric name="fundingAmount" tooltip=".">
                 Funding Amount
               </TableHeader>
-              <TableHeader name="delete" tooltip=".">
-                Delete
-              </TableHeader>
-              <TableHeader name="edit" tooltip=".">
-                Edit
-              </TableHeader>
-              <TableHeader name="complete" tooltip=".">
-                Complete
-              </TableHeader>
             </DataTable>
           </div>
         </Link>
       </div>
     );
   }
-  // THE DIFFERENCE
-  // THE DIFFERENCE
-  // THE DIFFERENCE
-  // THE DIFFERENCE
-  // THE DIFFERENCE
-  // THE DIFFERENCE
-  // THE DIFFERENCE
-  // THE DIFFERENCE
-  // THE DIFFERENCE
-  // render() {
-  //   return (
-  //     <div>
-  //       <form onSubmit={this.onSubmitHandle.bind(this)}>
-  //         <input
-  //           type="text"
-  //           name="item"
-  //           className="item"
-  //           placeholder="StateName"
-  //         />
-  //         <input
-  //           type="text"
-  //           name="item2"
-  //           className="item"
-  //           placeholder="FUNDING VALUE"
-  //         />
-
-  //         <button className="btn-add-item">Add</button>
-  //       </form>
-  //       <ul>
-  //         {this.state.state.map(item => (
-  //           <li key={item.id}>
-  //             {"STATENAME " + item.name + " AMOUNT "}
-  //             {item.amount}
-
-  //             <button onClick={this.onDeleteHandle.bind(this, item.id)}>
-  //               Delete
-  //             </button>
-  //           </li>
-  //         ))}
-  //       </ul>
-  //     </div>
-  //   );
-  // }
 }
 
 export default stateRead;
