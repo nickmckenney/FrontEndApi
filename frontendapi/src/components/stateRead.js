@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../App.css";
-import { TableHeader, DataTable } from "react-mdl";
+import { TableHeader, DataTable, FABButton, Icon } from "react-mdl";
 
 import { Route, Link } from "react-router-dom";
 class stateRead extends Component {
@@ -114,8 +114,11 @@ class stateRead extends Component {
             className="item"
             placeholder="FUNDING VALUE"
           />
-
-          <button className="btn-add-item">Add</button>
+          <div className="btn">
+            <FABButton colored ripple>
+              <Icon name="add" />
+            </FABButton>
+          </div>
         </form>
         <form onSubmit={this.onSubmitHandleDelete.bind(this)}>
           <input
@@ -124,8 +127,11 @@ class stateRead extends Component {
             className="item"
             placeholder="Delete StateName"
           />
-
-          <button className="btn-add-item">Delete</button>
+          <div className="btn">
+            <FABButton colored ripple>
+              <Icon name="clear" />
+            </FABButton>
+          </div>
         </form>
         <form onSubmit={this.onSubmitHandleEdit.bind(this)}>
           <input
@@ -140,8 +146,11 @@ class stateRead extends Component {
             className="item"
             placeholder="Edit Funding Amount"
           />
-
-          <button className="btn-add-item">Edit</button>
+          <div className="btn">
+            <FABButton colored ripple>
+              <Icon name="edit" />
+            </FABButton>
+          </div>
         </form>
         <Link to="/state/">
           <div className="statesPrinted">
