@@ -44,12 +44,24 @@ class stateRead extends Component {
   onSubmitHandleDelete(event) {
     event.preventDefault();
     let name = event.target.item.value;
-    console.log(event.target.item.value);
     this.setState({
       state: this.state.state.filter(item => {
         if (item.name !== name) {
           return item;
         }
+      })
+    });
+  }
+  onSubmitHandleEdit(event) {
+    event.preventDefault();
+    let name = event.target.item.value;
+    let price = event.target.itemAmount.value;
+    this.setState({
+      state: this.state.state.filter(item => {
+        if (item.name == name) {
+          item.amount = price;
+        }
+        return item;
       })
     });
   }
@@ -77,6 +89,9 @@ class stateRead extends Component {
           <button onClick={this.onDeleteHandle.bind(this, input.id)}>
             Delete
           </button>
+        ),
+        edit: (
+          <button onClick={this.onEditHandle.bind(this, input.id)}>Edit</button>
         )
       };
 
@@ -107,10 +122,26 @@ class stateRead extends Component {
             type="text"
             name="item"
             className="item"
-            placeholder="Edit StateName"
+            placeholder="Delete StateName"
           />
 
           <button className="btn-add-item">Delete</button>
+        </form>
+        <form onSubmit={this.onSubmitHandleEdit.bind(this)}>
+          <input
+            type="text"
+            name="item"
+            className="item"
+            placeholder="Enter StateName"
+          />
+          <input
+            type="text"
+            name="itemAmount"
+            className="item"
+            placeholder="Edit Funding Amount"
+          />
+
+          <button className="btn-add-item">Edit</button>
         </form>
         <Link to="/state/">
           <div className="statesPrinted">
