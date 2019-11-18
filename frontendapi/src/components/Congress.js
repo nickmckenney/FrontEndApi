@@ -46,7 +46,6 @@ class Congress extends Component {
         delete: (
           <button className="url" onClick={this.onClick.bind(this, input.id)}>
             {input.congressional_justification_url}
-            {/* {this.state.x} */}
           </button>
         )
       };

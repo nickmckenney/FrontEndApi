@@ -13,7 +13,7 @@ class stateRead extends Component {
     };
     this.getState = this.getState.bind(this);
   }
-
+  // deleting
   onDeleteHandle() {
     let id = this.state.state[0]._id;
     this.setState({
@@ -25,9 +25,8 @@ class stateRead extends Component {
       })
     });
   }
-  onEditHandle() {
-    console.log("a");
-  }
+  onEditHandle() {}
+  // adding
   onSubmitHandle(event) {
     event.preventDefault();
     this.setState({
@@ -41,6 +40,7 @@ class stateRead extends Component {
     });
     event.target.item.value = "";
   }
+  // deleting
   onSubmitHandleDelete(event) {
     event.preventDefault();
     let name = event.target.item.value;
@@ -52,6 +52,7 @@ class stateRead extends Component {
       })
     });
   }
+  // editing
   onSubmitHandleEdit(event) {
     event.preventDefault();
     let name = event.target.item.value;
