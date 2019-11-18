@@ -7,7 +7,8 @@ class Congress extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      state: []
+      state: [],
+      x: 0
     };
     this.getState = this.getState.bind(this);
   }
@@ -26,17 +27,27 @@ class Congress extends Component {
   componentDidMount() {
     this.getState();
   }
-
+  onClick(input) {
+    console.log(this.state.state[1].congressional_justification_url);
+  }
   render() {
     let rowsInArray = this.state.state.map(input => {
+      // console.log(input.congressional_justification_url);
+      this.state.x += 1;
       let obj = {
         percentage_of_total_budget_authority:
           input.percentage_of_total_budget_authority,
-        congressional_justification_url: [
-          input.congressional_justification_url
-        ],
+        congressional_justification_url: input.congressional_justification_url,
         current_total_budget_authority_amount:
-          input.current_total_budget_authority_amount
+          input.current_total_budget_authority_amount,
+        state: input.name,
+        fundingAmount: input.amount,
+        delete: (
+          <button onClick={this.onClick.bind(this, input.id)}>
+            {input.congressional_justification_url}
+            {this.state.x}
+          </button>
+        )
       };
 
       return obj;
@@ -56,11 +67,7 @@ class Congress extends Component {
               >
                 percentage_of_total_budget_authority
               </TableHeader>
-              <TableHeader
-                numeric
-                name="congressional_justification_url"
-                tooltip="aaa"
-              >
+              <TableHeader name="congressional_justification_url" tooltip="aaa">
                 congressional_justification
               </TableHeader>
               <TableHeader
@@ -68,6 +75,9 @@ class Congress extends Component {
                 tooltip="aaa"
               >
                 current_total_budget_authority_amount
+              </TableHeader>
+              <TableHeader name="delete" tooltip="aaa">
+                Take Me to Website
               </TableHeader>
             </DataTable>
           </div>
