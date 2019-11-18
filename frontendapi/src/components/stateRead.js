@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../App.css";
 import { TableHeader, DataTable, FABButton, Icon } from "react-mdl";
-
+import axios from "axios";
 import { Route, Link } from "react-router-dom";
 class stateRead extends Component {
   constructor(props) {
@@ -67,7 +67,42 @@ class stateRead extends Component {
     });
   }
   getState() {
-    fetch("https://governmentfundingapi.herokuapp.com/state/", {
+    fetch(
+      "https://governmentfundingapi.herokuapp.com/state/",
+
+      {
+        headers: {
+          method: "GET",
+          Accept: "application/json"
+        }
+      }
+    )
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ state: res });
+      });
+  }
+  onSubmitDeleteHandle() {
+    fetch(
+      "https://governmentfundingapi.herokuapp.com/state/South%20Carolina",
+
+      {
+        method: "DELETE",
+        mode: "cors",
+        headers: {
+          Accept: "application/json"
+        }
+      }
+    )
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ state: res });
+      });
+  }
+  onDeleteHandle() {
+    fetch("https://governmentfundingapi.herokuapp.com/state/South%20Carolina", {
+      method: "DELETE",
+      mode: "cors",
       headers: {
         Accept: "application/json"
       }
@@ -80,7 +115,32 @@ class stateRead extends Component {
   componentDidMount() {
     this.getState();
   }
-
+  // onDeleteHandle() {
+  //   axios.delete(
+  //     "https://governmentfundingapi.herokuapp.com/state/South%20Carolina",
+  //     {
+  //       headers: {
+  //         Authorization: authorizationToken
+  //       },
+  //       data: {
+  //         source: source
+  //       }
+  //     }
+  //   );
+  // }
+  // onSubmitDeleteHandle() {
+  //   axios.delete(
+  //     "https://governmentfundingapi.herokuapp.com/state/South%20Carolina",
+  //     {
+  //       headers: {
+  //         Authorization: authorizationToken
+  //       },
+  //       data: {
+  //         source: source
+  //       }
+  //     }
+  //   );
+  // }
   render() {
     let rowsInArray = this.state.state.map(input => {
       let obj = {
