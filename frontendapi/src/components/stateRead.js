@@ -82,78 +82,60 @@ class stateRead extends Component {
         this.setState({ state: res });
       });
   }
-  onSubmitDeleteHandle() {
-    fetch(
-      "https://governmentfundingapi.herokuapp.com/state/South%20Carolina",
+  // onSubmitDeleteHandle() {
+  //   fetch(
+  //     "https://governmentfundingapi.herokuapp.com/state/South%20Carolina",
 
-      {
-        method: "DELETE",
-        mode: "cors",
-        headers: {
-          Accept: "application/json"
-        }
-      }
-    )
-      .then(res => res.json())
+  //     {
+  //       method: "DELETE",
+  //       mode: "cors",
+  //       headers: {
+  //         Accept: "application/json"
+  //       }
+  //     }
+  //   )
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       this.setState({ state: res });
+  //     });
+  // }
+
+  onDeleteHandle(e) {
+    console.log("a");
+
+    e.preventDefault();
+    axios
+      .delete(
+        "https://governmentfundingapi.herokuapp.com/state/South%20Carolina"
+      )
       .then(res => {
-        this.setState({ state: res });
-      });
+        console.log(res);
+        this.setState({ results: res.data });
+      })
+      .catch(err => console.log(err));
   }
-  onDeleteHandle() {
-    fetch("https://governmentfundingapi.herokuapp.com/state/South%20Carolina", {
-      method: "DELETE",
-      mode: "cors",
-      headers: {
-        Accept: "application/json"
-      }
-    })
-      .then(res => res.json())
+
+  onSubmitDeleteHandle(e) {
+    console.log("a");
+    e.preventDefault();
+    axios
+      .delete(
+        "https://governmentfundingapi.herokuapp.com/state/South%20Carolina"
+      )
       .then(res => {
-        this.setState({ state: res });
-      });
+        console.log(res);
+        this.setState({ results: res.data });
+      })
+      .catch(err => console.log(err));
   }
   componentDidMount() {
     this.getState();
   }
-  // onDeleteHandle() {
-  //   axios.delete(
-  //     "https://governmentfundingapi.herokuapp.com/state/South%20Carolina",
-  //     {
-  //       headers: {
-  //         Authorization: authorizationToken
-  //       },
-  //       data: {
-  //         source: source
-  //       }
-  //     }
-  //   );
-  // }
-  // onSubmitDeleteHandle() {
-  //   axios.delete(
-  //     "https://governmentfundingapi.herokuapp.com/state/South%20Carolina",
-  //     {
-  //       headers: {
-  //         Authorization: authorizationToken
-  //       },
-  //       data: {
-  //         source: source
-  //       }
-  //     }
-  //   );
-  // }
   render() {
     let rowsInArray = this.state.state.map(input => {
       let obj = {
         state: input.name,
-        fundingAmount: input.amount,
-        delete: (
-          <button onClick={this.onDeleteHandle.bind(this, input.id)}>
-            Delete
-          </button>
-        ),
-        edit: (
-          <button onClick={this.onEditHandle.bind(this, input.id)}>Edit</button>
-        )
+        fundingAmount: input.amount
       };
 
       return obj;
