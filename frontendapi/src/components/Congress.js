@@ -28,7 +28,8 @@ class Congress extends Component {
     this.getState();
   }
   onClick(input) {
-    console.log(this.state.state[1].congressional_justification_url);
+    console.log(this.state.state[2].congressional_justification_url);
+    console.log(this);
   }
   render() {
     let rowsInArray = this.state.state.map(input => {
@@ -43,9 +44,9 @@ class Congress extends Component {
         state: input.name,
         fundingAmount: input.amount,
         delete: (
-          <button onClick={this.onClick.bind(this, input.id)}>
+          <button className="url" onClick={this.onClick.bind(this, input.id)}>
             {input.congressional_justification_url}
-            {this.state.x}
+            {/* {this.state.x} */}
           </button>
         )
       };
