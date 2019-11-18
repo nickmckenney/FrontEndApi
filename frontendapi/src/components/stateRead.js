@@ -9,63 +9,29 @@ class stateRead extends Component {
     this.state = {
       state: [],
       edit: false,
-      id: null
+      id: null,
+      name: ""
     };
     this.getState = this.getState.bind(this);
+    this.onDeleteHandle = this.onDeleteHandle.bind(this);
+    this.onEditHandle = this.onEditHandle.bind(this);
+    this.onAddHandle = this.onAddHandle.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
-  // deleting
-  onDeleteHandle() {
-    let id = this.state.state[0]._id;
-    this.setState({
-      state: this.state.state.filter(item => {
-        console.log(this.state.state[0]._id);
-        if (item._id !== id) {
-          return item;
-        }
+  onDeleteHandle(e) {
+    console.log(this);
+
+    e.preventDefault();
+    axios
+      .delete(
+        `https://governmentfundingapi.herokuapp.com/state/${this.state.name}`
+      )
+      .then(res => {
+        this.setState({ results: res.data });
       })
-    });
+      .catch(err => console.log(err));
   }
-  onEditHandle() {}
-  // adding
-  onSubmitHandle(event) {
-    event.preventDefault();
-    this.setState({
-      state: [
-        ...this.state.state,
-        {
-          name: event.target.item.value,
-          amount: event.target.item2.value
-        }
-      ]
-    });
-    event.target.item.value = "";
-  }
-  // deleting
-  onSubmitHandleDelete(event) {
-    event.preventDefault();
-    let name = event.target.item.value;
-    this.setState({
-      state: this.state.state.filter(item => {
-        if (item.name !== name) {
-          return item;
-        }
-      })
-    });
-  }
-  // editing
-  onSubmitHandleEdit(event) {
-    event.preventDefault();
-    let name = event.target.item.value;
-    let price = event.target.itemAmount.value;
-    this.setState({
-      state: this.state.state.filter(item => {
-        if (item.name == name) {
-          item.amount = price;
-        }
-        return item;
-      })
-    });
-  }
+
   getState() {
     fetch(
       "https://governmentfundingapi.herokuapp.com/state/",
@@ -82,54 +48,44 @@ class stateRead extends Component {
         this.setState({ state: res });
       });
   }
-  // onSubmitDeleteHandle() {
-  //   fetch(
-  //     "https://governmentfundingapi.herokuapp.com/state/South%20Carolina",
 
-  //     {
-  //       method: "DELETE",
-  //       mode: "cors",
-  //       headers: {
-  //         Accept: "application/json"
-  //       }
-  //     }
-  //   )
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       this.setState({ state: res });
-  //     });
-  // }
-
-  onDeleteHandle(e) {
-    console.log("a");
+  onAddHandle(e) {
+    console.log(this);
 
     e.preventDefault();
     axios
-      .delete(
-        "https://governmentfundingapi.herokuapp.com/state/South%20Carolina"
+      .create(
+        `https://governmentfundingapi.herokuapp.com/state/${this.state.name}`
       )
       .then(res => {
-        console.log(res);
         this.setState({ results: res.data });
       })
       .catch(err => console.log(err));
   }
+  // new method
+  onEditHandle(e) {
+    console.log(this);
 
-  onSubmitDeleteHandle(e) {
-    console.log("a");
     e.preventDefault();
     axios
-      .delete(
-        "https://governmentfundingapi.herokuapp.com/state/South%20Carolina"
+      .edit(
+        "https://governmentfundingapi.herokuapp.com/state/" +
+          this.state.name.value
       )
       .then(res => {
-        console.log(res);
         this.setState({ results: res.data });
       })
       .catch(err => console.log(err));
   }
+  // new method
+
   componentDidMount() {
     this.getState();
+  }
+  onChange(e) {
+    this.setState({
+      name: e.target.value
+    });
   }
   render() {
     let rowsInArray = this.state.state.map(input => {
@@ -137,14 +93,13 @@ class stateRead extends Component {
         state: input.name,
         fundingAmount: input.amount
       };
-
       return obj;
     });
 
     return (
       <div className="App">
         <h1 className="App-header">Your States Fundings</h1>
-        <form onSubmit={this.onSubmitHandle.bind(this)}>
+        <form>
           <input
             type="text"
             name="item"
@@ -158,25 +113,30 @@ class stateRead extends Component {
             placeholder="FUNDING VALUE"
           />
           <div className="btn">
-            <FABButton colored ripple>
+            <FABButton onClick={this.onAddHandle} colored ripple>
               <Icon name="add" />
             </FABButton>
           </div>
         </form>
-        <form onSubmit={this.onSubmitHandleDelete.bind(this)}>
+        {/* NEW BUTTON */} {/* NEW BUTTON */} {/* NEW BUTTON */}
+        {/* NEW BUTTON */}
+        <form>
           <input
+            onChange={this.onChange}
             type="text"
             name="item"
             className="item1"
             placeholder="Delete StateName"
           />
           <div className="btn">
-            <FABButton colored ripple>
+            <FABButton onClick={this.onDeleteHandle} colored ripple>
               <Icon name="clear" />
             </FABButton>
           </div>
         </form>
-        <form onSubmit={this.onSubmitHandleEdit.bind(this)}>
+        {/* NEW BUTTON */} {/* NEW BUTTON */}
+        {/* NEW BUTTON */}
+        <form>
           <input
             type="text"
             name="item"
@@ -190,7 +150,7 @@ class stateRead extends Component {
             placeholder="Edit Funding Amount"
           />
           <div className="btn">
-            <FABButton colored ripple>
+            <FABButton onClick={this.onEditHandle} colored ripple>
               <Icon name="edit" />
             </FABButton>
           </div>
