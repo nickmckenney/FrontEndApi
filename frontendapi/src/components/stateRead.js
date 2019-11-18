@@ -124,7 +124,7 @@ class stateRead extends Component {
           <input
             type="text"
             name="item"
-            className="item"
+            className="item1"
             placeholder="Delete StateName"
           />
           <div className="btn">
@@ -152,7 +152,7 @@ class stateRead extends Component {
             </FABButton>
           </div>
         </form>
-        <Link to="/state/">
+        <Link to="/state">
           <div className="statesPrinted">
             <DataTable shadow={2} rows={rowsInArray}>
               <TableHeader className="a" name="state" tooltip=".">

@@ -41,7 +41,7 @@ class Congress extends Component {
       <div className="App">
         <h1 className="App-header">Your State Information and Income</h1>
 
-        <Link to="/stateInfo/">
+        <Link to="/stateInfo">
           <div className="statesPrinted">
             <DataTable shadow={2} rows={rowsInArray}>
               <TableHeader className="a" name="state" tooltip=".">

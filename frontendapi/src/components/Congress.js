@@ -32,7 +32,9 @@ class Congress extends Component {
       let obj = {
         percentage_of_total_budget_authority:
           input.percentage_of_total_budget_authority,
-        congressional_justification_url: input.congressional_justification_url,
+        congressional_justification_url: [
+          input.congressional_justification_url
+        ],
         current_total_budget_authority_amount:
           input.current_total_budget_authority_amount
       };
@@ -44,26 +46,26 @@ class Congress extends Component {
       <div className="App">
         <h1 className="App-header">Your Congressional Justifications</h1>
 
-        <Link to="/congress/">
+        <Link to="/congress">
           <div className="statesPrinted">
             <DataTable shadow={2} rows={rowsInArray}>
               <TableHeader
                 className="a"
                 name="percentage_of_total_budget_authority"
-                tooltip="."
+                tooltip="aaa"
               >
                 percentage_of_total_budget_authority
               </TableHeader>
               <TableHeader
                 numeric
                 name="congressional_justification_url"
-                tooltip="."
+                tooltip="aaa"
               >
                 congressional_justification
               </TableHeader>
               <TableHeader
                 name="current_total_budget_authority_amount"
-                tooltip="."
+                tooltip="aaa"
               >
                 current_total_budget_authority_amount
               </TableHeader>
