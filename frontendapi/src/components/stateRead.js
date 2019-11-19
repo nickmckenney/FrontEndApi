@@ -10,13 +10,15 @@ class stateRead extends Component {
       state: [],
       edit: false,
       id: null,
-      name: ""
+      name: "",
+      fundingValue: null
     };
     this.getState = this.getState.bind(this);
     this.onDeleteHandle = this.onDeleteHandle.bind(this);
-    this.onEditHandle = this.onEditHandle.bind(this);
+    // this.onEditHandle = this.onEditHandle.bind(this);
     this.onAddHandle = this.onAddHandle.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.onChangeValue = this.onChangeValue.bind(this);
   }
   onDeleteHandle(e) {
     console.log(this);
@@ -49,34 +51,46 @@ class stateRead extends Component {
       });
   }
 
+  // onAddHandle(e) {
+  //   e.preventDefault();
+  //   axios
+  //     .post("https://governmentfundingapi.herokuapp.com/state/", {})
+  //     .then(res => {
+  //       console.log(res);
+  //       console.log(res.data);
+  //       this.setState({ results: res.data });
+  //     })
+  //     .catch(err => console.log(err));
+  // }
   onAddHandle(e) {
-    console.log(this);
-
+    console.log(this.state.fundingValue);
     e.preventDefault();
     axios
-      .create(
-        `https://governmentfundingapi.herokuapp.com/state/${this.state.name}`
-      )
+      .post("https://governmentfundingapi.herokuapp.com/state/", {
+        amount: this.state.fundingValue,
+        name: this.state.name
+      })
       .then(res => {
-        this.setState({ results: res.data });
+        console.log(res);
       })
       .catch(err => console.log(err));
   }
+
   // new method
-  onEditHandle(e) {
-    console.log(this);
-
-    e.preventDefault();
-    axios
-      .edit(
-        "https://governmentfundingapi.herokuapp.com/state/" +
-          this.state.name.value
-      )
-      .then(res => {
-        this.setState({ results: res.data });
-      })
-      .catch(err => console.log(err));
-  }
+  // new method
+  // new method
+  // new method
+  // onEditHandle(e) {
+  //   e.preventDefault();
+  //   axios
+  //     .post(
+  //       `https://governmentfundingapi.herokuapp.com/state/${this.state.name}`
+  //     )
+  //     .then(res => {
+  //       this.setState({ results: res.data });
+  //     })
+  //     .catch(err => console.log(err));
+  // }
   // new method
 
   componentDidMount() {
@@ -85,6 +99,11 @@ class stateRead extends Component {
   onChange(e) {
     this.setState({
       name: e.target.value
+    });
+  }
+  onChangeValue(e) {
+    this.setState({
+      fundingValue: e.target.value
     });
   }
   render() {
@@ -101,14 +120,16 @@ class stateRead extends Component {
         <h1 className="App-header">Your States Fundings</h1>
         <form>
           <input
+            onChange={this.onChange}
             type="text"
             name="item"
             className="item"
             placeholder="StateName"
           />
           <input
-            type="text"
-            name="item2"
+            onChange={this.onChangeValue}
+            type="number"
+            name="item"
             className="item"
             placeholder="FUNDING VALUE"
           />
