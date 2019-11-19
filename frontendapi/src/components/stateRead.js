@@ -15,7 +15,7 @@ class stateRead extends Component {
     };
     this.getState = this.getState.bind(this);
     this.onDeleteHandle = this.onDeleteHandle.bind(this);
-    // this.onEditHandle = this.onEditHandle.bind(this);
+    this.onEditHandle = this.onEditHandle.bind(this);
     this.onAddHandle = this.onAddHandle.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onChangeValue = this.onChangeValue.bind(this);
@@ -51,17 +51,6 @@ class stateRead extends Component {
       });
   }
 
-  // onAddHandle(e) {
-  //   e.preventDefault();
-  //   axios
-  //     .post("https://governmentfundingapi.herokuapp.com/state/", {})
-  //     .then(res => {
-  //       console.log(res);
-  //       console.log(res.data);
-  //       this.setState({ results: res.data });
-  //     })
-  //     .catch(err => console.log(err));
-  // }
   onAddHandle(e) {
     console.log(this.state.fundingValue);
     e.preventDefault();
@@ -80,18 +69,20 @@ class stateRead extends Component {
   // new method
   // new method
   // new method
-  // onEditHandle(e) {
-  //   e.preventDefault();
-  //   axios
-  //     .post(
-  //       `https://governmentfundingapi.herokuapp.com/state/${this.state.name}`
-  //     )
-  //     .then(res => {
-  //       this.setState({ results: res.data });
-  //     })
-  //     .catch(err => console.log(err));
-  // }
-  // new method
+  onEditHandle(e) {
+    e.preventDefault();
+    axios
+      .put(
+        `https://governmentfundingapi.herokuapp.com/state/${this.state.name}`,
+        {
+          amount: this.state.fundingValue
+        }
+      )
+      .then(res => {
+        this.setState({ results: res.data });
+      })
+      .catch(err => console.log(err));
+  }
 
   componentDidMount() {
     this.getState();
@@ -101,6 +92,7 @@ class stateRead extends Component {
       name: e.target.value
     });
   }
+
   onChangeValue(e) {
     this.setState({
       fundingValue: e.target.value
@@ -159,12 +151,14 @@ class stateRead extends Component {
         {/* NEW BUTTON */}
         <form>
           <input
+            onChange={this.onChange}
             type="text"
             name="item"
             className="item"
             placeholder="Enter StateName"
           />
           <input
+            onChange={this.onChangeValue}
             type="text"
             name="itemAmount"
             className="item"
