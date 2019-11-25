@@ -67,8 +67,7 @@ class stateRead extends Component {
 
   // new method
   // new method
-  // new method
-  // new method
+
   onEditHandle(e) {
     e.preventDefault();
     axios

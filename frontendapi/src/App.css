@@ -63,6 +63,14 @@
   margin-left: 28px;
   width: 320px;
 }
+.material-icons {
+  background: white;
+  width: 20px;
+  height: 10px;
+}
+.mdl-layout__drawer-button {
+  background: coral;
+}
 .btn {
   margin: 0 auto;
   padding: 0px;
