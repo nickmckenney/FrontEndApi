@@ -98,4 +98,36 @@ form {
     background-blend-mode: lighten;
     height: 100vh;
   }
+  .item1,
+  .item2 {
+    position: relative;
+    left: 7%;
+  }
+  form {
+    position: relative;
+    left: -57px;
+    width: 478px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  form {
+    width: 400px;
+    position: relative;
+    left: -50px;
+  }
+  .item1 {
+    width: 250px;
+  }
+}
+@media only screen and (max-width: 560px) {
+  form {
+    position: relative;
+    left: 21px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  form {
+    width: 400px;
+    left: -30px;
+  }
 }
