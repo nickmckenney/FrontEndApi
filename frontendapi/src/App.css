@@ -49,28 +49,26 @@
   padding: 0px;
 
   height: 50px;
-  display: grid;
-  display: flex;
-  flex-direction: column;
   margin: 0 auto;
   border-radius: 10px;
   margin-top: 10px;
   text-align: center;
   font-size: 10px;
   background-image: url("https://media1.giphy.com/media/xThuWjC7yute751y0g/giphy.gif?cid=790b7611c0cee34f1697a3593d1ad0a520cdd7ed857f98c8&rid=giphy.gif");
+  position: relative;
+  left: 10%;
 }
 .item1 {
   margin-left: 28px;
   width: 320px;
 }
-.material-icons {
-  background: white;
-  width: 20px;
-  height: 10px;
-}
+
 .mdl-layout__drawer-button {
   background: coral;
+  width: 55px;
+  height: 47px;
 }
+
 .btn {
   margin: 0 auto;
   padding: 0px;
@@ -86,4 +84,22 @@ form {
   padding: 0px;
   flex-direction: row;
   margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+  .intro-home-page {
+    font-size: 40px;
+    padding-top: 50px;
+    color: mediumblue;
+  }
+  .home {
+    background-image: url("https://images.unsplash.com/photo-1573674435576-6bc37e284667?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: lighten;
+    height: 100vh;
+  }
 }
