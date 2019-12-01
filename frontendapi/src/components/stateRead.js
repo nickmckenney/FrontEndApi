@@ -60,7 +60,13 @@ class stateRead extends Component {
         name: this.state.name
       })
       .then(res => {
-        console.log(res);
+        let myArr = this.state.state;
+        let myObj = {
+          amount: res.data.amount,
+          name: res.data.name
+        };
+        myArr.push(myObj);
+        this.setState({ state: myArr });
       })
       .catch(err => console.log(err));
   }
@@ -98,14 +104,6 @@ class stateRead extends Component {
     });
   }
   render() {
-    let rowsInArray = this.state.state.map(input => {
-      let obj = {
-        state: input.name,
-        fundingAmount: input.amount
-      };
-      return obj;
-    });
-
     return (
       <div className="App">
         <h1 className="App-header">Your States Fundings</h1>
@@ -171,7 +169,16 @@ class stateRead extends Component {
         </form>
         <Link to="/state">
           <div className="statesPrinted">
-            <DataTable shadow={2} rows={rowsInArray}>
+            <DataTable
+              shadow={2}
+              rows={this.state.state.map(input => {
+                let obj = {
+                  state: input.name,
+                  fundingAmount: input.amount
+                };
+                return obj;
+              })}
+            >
               <TableHeader className="a" name="state" tooltip=".">
                 State Name
               </TableHeader>
