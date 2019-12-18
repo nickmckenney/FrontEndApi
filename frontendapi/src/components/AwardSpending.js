@@ -47,11 +47,9 @@ class stateRead extends Component {
               <TableHeader className="a" name="recipient_name" tooltip=".">
                 Name
               </TableHeader>
-              <TableHeader className="a" name="award_category" tooltip=".">
-                Type of Award
-              </TableHeader>
+
               <TableHeader className="a" name="amount" tooltip=".">
-                Ammount Recieved
+                Amount
               </TableHeader>
             </DataTable>
             <h1></h1>

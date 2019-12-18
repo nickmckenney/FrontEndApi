@@ -7,21 +7,12 @@
   height: 100vh;
 }
 .header-color {
-  background: #23074d;
   background: -webkit-linear-gradient(to right, grey, #23074d);
   background: linear-gradient(to right, grey, #23074d);
 }
 .intro-home-page {
   text-align: center;
   margin: 0px;
-}
-.mdl-layout__drawer {
-  background: gainsboro;
-}
-.element {
-  width: 100%;
-  height: 100%;
-  animation: pulse 4s infinite;
 }
 
 .statesPrinted {
@@ -31,12 +22,12 @@
   padding: 0px;
 }
 .App-header {
-  background-color: black;
+  background: #f4976c;
   color: white;
   text-align: center;
 }
 .App {
-  background-color: teal;
+  background-color: #374785;
 }
 
 .item,
@@ -50,7 +41,6 @@
   margin-top: 10px;
   text-align: center;
   font-size: 10px;
-  background-image: url("https://media1.giphy.com/media/xThuWjC7yute751y0g/giphy.gif?cid=790b7611c0cee34f1697a3593d1ad0a520cdd7ed857f98c8&rid=giphy.gif");
   position: relative;
   left: 10%;
 }
@@ -73,6 +63,7 @@
   display: flex;
   justify-content: center;
 }
+
 form {
   display: flex;
   margin: 0 auto;
@@ -81,11 +72,24 @@ form {
   flex-direction: row;
   margin-bottom: 10px;
 }
+.test {
+  color: black;
+  font-size: 20px;
+}
+.url {
+  width: 100%;
+  background-color: lightcoral;
+}
+.a {
+  font-size: 2px;
+  padding: 0px 0px 0px 0px;
+}
 
 @media only screen and (max-width: 600px) {
   body {
     background-color: lightblue;
   }
+
   .intro-home-page {
     font-size: 40px;
     padding-top: 50px;
@@ -108,6 +112,21 @@ form {
     left: -57px;
     width: 478px;
   }
+  .mdl-data-table td:first-of-type,
+  .mdl-data-table th:first-of-type {
+    font-size: 13px;
+    padding: 0px;
+    margin: 0 auto;
+    display: table;
+    font-variant-caps: unicase;
+  }
+  .mdl-data-table__cell--non-numeric,
+  .mdl-data-table td:last-of-type,
+  .mdl-data-table th:last-of-type {
+    padding-right: 0px;
+    padding-left: 0px;
+    font-size: 13px;
+  }
 }
 @media only screen and (max-width: 500px) {
   form {
@@ -124,10 +143,47 @@ form {
     position: relative;
     left: 21px;
   }
+  .mdl-data-table td:first-of-type,
+  .mdl-data-table th:first-of-type {
+    font-size: 10px;
+    padding: 0px;
+    margin: 0 auto;
+    display: table;
+    font-variant-caps: unicase;
+  }
+  .mdl-data-table__cell--non-numeric,
+  .mdl-data-table td:last-of-type,
+  .mdl-data-table th:last-of-type {
+    padding-right: 0px;
+    padding-left: 0px;
+    font-size: 10px;
+  }
 }
 @media only screen and (max-width: 400px) {
   form {
     width: 400px;
     left: -30px;
+  }
+  .App-header {
+    font-size: 20px;
+    height: 5vh;
+  }
+  .intro-home-page {
+    font-size: 20px;
+  }
+  .mdl-data-table td:first-of-type,
+  .mdl-data-table th:first-of-type {
+    font-size: 11px;
+    padding: 0px;
+    margin: 0 auto;
+    display: table;
+    font-variant-caps: unicase;
+  }
+  .mdl-data-table__cell--non-numeric,
+  .mdl-data-table td:last-of-type,
+  .mdl-data-table th:last-of-type {
+    padding-right: 0px;
+    padding-left: 0px;
+    font-size: 11px;
   }
 }

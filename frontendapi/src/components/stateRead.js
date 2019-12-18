@@ -21,34 +21,17 @@ class stateRead extends Component {
     this.onChangeValue = this.onChangeValue.bind(this);
   }
   onDeleteHandle(e) {
-    console.log(this);
-
     e.preventDefault();
     axios
       .delete(
         `https://governmentfundingapi.herokuapp.com/state/${this.state.name}`
       )
+
       .then(res => {
-        this.setState({ results: res.data });
+        // this.setState({ results: res.data });
+        this.componentDidMount();
       })
       .catch(err => console.log(err));
-  }
-
-  getState() {
-    fetch(
-      "https://governmentfundingapi.herokuapp.com/state/",
-
-      {
-        headers: {
-          method: "GET",
-          Accept: "application/json"
-        }
-      }
-    )
-      .then(res => res.json())
-      .then(res => {
-        this.setState({ state: res });
-      });
   }
 
   onAddHandle(e) {
@@ -70,7 +53,22 @@ class stateRead extends Component {
       })
       .catch(err => console.log(err));
   }
+  getState() {
+    fetch(
+      "https://governmentfundingapi.herokuapp.com/state/",
 
+      {
+        headers: {
+          method: "GET",
+          Accept: "application/json"
+        }
+      }
+    )
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ state: res });
+      });
+  }
   // new method
   // new method
 
@@ -84,7 +82,7 @@ class stateRead extends Component {
         }
       )
       .then(res => {
-        this.setState({ results: res.data });
+        this.componentDidMount();
       })
       .catch(err => console.log(err));
   }

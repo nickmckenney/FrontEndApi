@@ -19,7 +19,6 @@ class App extends Component {
               <a href="congress">Congress Funding</a>
               <a href="AwardId">Award Ids</a>
               <a href="state">States</a>
-              {/* <a href="stateInfo">State Information</a> */}
             </Navigation>
           </Header>
           <Drawer title="Government Funding" className="header-color">
@@ -29,7 +28,6 @@ class App extends Component {
               <a href="congress">Congress Funding</a>
               <a href="AwardId">Award Ids</a>
               <a href="state">States</a>
-              {/* <a href="stateInfo">State Information</a> */}
             </Navigation>
           </Drawer>
           <Content>
