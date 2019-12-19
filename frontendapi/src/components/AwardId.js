@@ -48,10 +48,10 @@ class stateRead extends Component {
                 Account Title
               </TableHeader>
               <TableHeader className="a" name="award_Id" tooltip=".">
-                Account Id
+                Account
               </TableHeader>
               <TableHeader className="a" name="agency_name" tooltip=".">
-                Account Id
+                Name
               </TableHeader>
             </DataTable>
             <h1></h1>

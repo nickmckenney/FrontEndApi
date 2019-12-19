@@ -159,7 +159,7 @@ form {
     font-size: 10px;
   }
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 420px) {
   form {
     width: 400px;
     left: -30px;
@@ -173,7 +173,7 @@ form {
   }
   .mdl-data-table td:first-of-type,
   .mdl-data-table th:first-of-type {
-    font-size: 11px;
+    font-size: 14px;
     padding: 0px;
     margin: 0 auto;
     display: table;
@@ -182,8 +182,6 @@ form {
   .mdl-data-table__cell--non-numeric,
   .mdl-data-table td:last-of-type,
   .mdl-data-table th:last-of-type {
-    padding-right: 0px;
-    padding-left: 0px;
-    font-size: 11px;
+    font-size: 14px;
   }
 }

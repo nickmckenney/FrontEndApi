@@ -17,7 +17,7 @@ class App extends Component {
               <a href="/">Home</a>
               <a href="AwardSpending">Award Names</a>
               <a href="congress">Congress Funding</a>
-              <a href="AwardId">Award Ids</a>
+              {/* <a href="AwardId">Award Ids</a> */}
               <a href="state">States</a>
             </Navigation>
           </Header>
@@ -26,7 +26,7 @@ class App extends Component {
               <a href="/">Home</a>
               <a href="AwardSpending">Award Names</a>
               <a href="congress">Congress Funding</a>
-              <a href="AwardId">Award Ids</a>
+              {/* <a href="AwardId">Award Ids</a> */}
               <a href="state">States</a>
             </Navigation>
           </Drawer>
